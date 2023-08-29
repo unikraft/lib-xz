@@ -1,0 +1,14 @@
+menuconfig LIBXZ
+    bool "xz-utils - LZMA compression library and XZ support"
+    select LIBPOSIX_SYSINFO
+    select LIBINTEL_INTRINSICS if ARCH_X86_64
+    default n
+
+if LIBXZ
+    config LIBXZ_MAIN
+    bool "Provide 'xz' utility as main"
+    depends on HAVE_LIBC
+    select LIBPOSIX_EVENT
+    default n
+
+endif
